@@ -1,0 +1,105 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:promise/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/eslint-recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    "plugin:@typescript-eslint/recommended" // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+  ],
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "project": true,
+    "ecmaVersion": 2021, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true, // Allows for the parsing of JSX
+      "tsx": true, // Allows for the parsing of JSX
+      "arrowFunctions": true
+    }
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["./src"]
+      }
+    }
+  },
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "@blueprintjs/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "Pages/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "Widgets/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "Features/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "Entities/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "Shared/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtins"],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
+      }
+    ],
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "no-inner-declarations": "off",
+    "class-methods-use-this": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "prettier/prettier": ["error", { "singleQuote": true, "printWidth": 100, "endOfLine": "auto" }]
+  }
+}
